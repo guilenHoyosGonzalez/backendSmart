@@ -1,0 +1,11 @@
+com\backendSmart\backendSmart\modelo\Estado.class
+com\backendSmart\backendSmart\repositorio\EstadoRepositorio.class
+com\backendSmart\backendSmart\servicio\ITareaServicio.class
+com\backendSmart\backendSmart\servicio\TareaServicio.class
+com\backendSmart\backendSmart\controller\TareaController.class
+com\backendSmart\backendSmart\excepcion\RecursoNoEncontradoException.class
+com\backendSmart\backendSmart\servicio\EstadoServicio.class
+com\backendSmart\backendSmart\BackendSmartApplication.class
+com\backendSmart\backendSmart\repositorio\TareaRepositorio.class
+com\backendSmart\backendSmart\modelo\Tarea.class
+com\backendSmart\backendSmart\servicio\IEstadoServicio.class
