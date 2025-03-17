@@ -5,6 +5,7 @@ import com.backendSmart.backendSmart.modelo.Estado;
 import com.backendSmart.backendSmart.modelo.Tarea;
 import com.backendSmart.backendSmart.servicio.EstadoServicio;
 import com.backendSmart.backendSmart.servicio.TareaServicio;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api-smarti")
@@ -79,7 +81,7 @@ public class TareaController {
 
              tareaDTO.add(tarea);
 
-             logger.info("\n"+" [0] : " + idTarea + "\n"+
+            /* logger.info("\n"+" [0] : " + idTarea + "\n"+
                             " Titulo [1]: " +  titulo +"\n"+
                             "Descripcion [2] : " + descricion+ "\n"+
                              "codigo_estado [3] : " +estado + "\n"+
@@ -88,6 +90,8 @@ public class TareaController {
                              "Marca[6] : " + marca + "\n"
                      );
 
+             */
+
          }
 
          return tareaDTO;
@@ -95,7 +99,7 @@ public class TareaController {
      }
 
 
-    @GetMapping("/tarea/{id}")
+    @GetMapping("/getTareaPorId/{id}")
     public ResponseEntity<Tarea> getTareaPorId(@PathVariable int id){
         Tarea tarea = this.tareaServicio.buscarTareasPorId(id);
         if(tarea!=null){
@@ -154,9 +158,20 @@ public class TareaController {
     }
 
     @GetMapping("/estados")
-    public List<Estado> getEstados(){
+    public List<Estado> getEstados() {
+
         List<Estado> estados = this.estadoServicio.listarEstados();
-        estados.forEach(estado -> logger.info(estado.toString()));
-        return estados;
+        List<Estado> estadosResumidos = new ArrayList<>();
+
+        for (Estado estado : estados) {
+
+            Estado estadoResumido = new Estado();
+            estadoResumido.setId(estado.getId());
+            estadoResumido.setEstado(estado.getEstado());
+
+            estadosResumidos.add(estadoResumido);
+        }
+
+        return estadosResumidos;
     }
 }

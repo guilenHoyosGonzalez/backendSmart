@@ -17,8 +17,10 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     private String estado;
     @OneToMany(mappedBy = "estado", fetch = FetchType.LAZY)
+
     private List<Tarea> tareas;
 
     public Integer getId() {
