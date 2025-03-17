@@ -2,8 +2,7 @@ package com.backendSmart.backendSmart.modelo;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
 
 @Data
@@ -20,7 +19,7 @@ public class Estado {
 
     private String estado;
     @OneToMany(mappedBy = "estado", fetch = FetchType.LAZY)
-
+    @JsonBackReference
     private List<Tarea> tareas;
 
     public Integer getId() {

@@ -52,7 +52,7 @@ public class TareaController {
 
      }
 
-    @GetMapping("/tareas")
+    @GetMapping("/getTareas")
     public List<Tarea> getTareas() {
          logger.info("Producto a tareas: ");
          List<Object[]> tareas =this.tareaServicio.listarTareas();
@@ -109,7 +109,7 @@ public class TareaController {
         }
     }
 
-    @PutMapping("/tarea/{id}")
+    @PutMapping("/editarTarea/{id}")
     public ResponseEntity<?> editarTarea(
             @PathVariable int id,
             @RequestBody Tarea tareaRecibida){
@@ -137,7 +137,7 @@ public class TareaController {
     }
 
     @DeleteMapping("/tarea/{id}")
-    public ResponseEntity<Map<String, Boolean>> eliminarProducto(@PathVariable int id){
+    public ResponseEntity<Map<String, Boolean>> eliminarTarea(@PathVariable int id){
         Tarea tarea = this.tareaServicio.buscarTareasPorId(id);
         this.tareaServicio.eliminarTarea(tarea.getIdTarea());
         Map<String, Boolean> respuesta = new HashMap<>();
@@ -157,7 +157,7 @@ public class TareaController {
 
     }
 
-    @GetMapping("/estados")
+    @GetMapping("/getEstados")
     public List<Estado> getEstados() {
 
         List<Estado> estados = this.estadoServicio.listarEstados();

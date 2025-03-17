@@ -2,6 +2,8 @@ package com.backendSmart.backendSmart.modelo;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Data
 @Entity
@@ -15,8 +17,10 @@ public class Tarea {
     Integer idTarea;
 
     @ManyToOne(fetch = FetchType.EAGER)
+
     @JoinColumn(name = "codigoEstado")  // Columna en la tabla tareas que referencia a estado
-    private Estado estado;
+    @JsonManagedReference
+   private Estado estado;
 
     String titulo;
     String descripcion;
