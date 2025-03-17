@@ -108,7 +108,7 @@ public class TareaController {
             throw new RecursoNoEncontradoException();
         }
     }
-
+    
     @PutMapping("/editarTarea/{id}")
     public ResponseEntity<?> editarTarea(
             @PathVariable int id,
